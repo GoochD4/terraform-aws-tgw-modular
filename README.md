@@ -39,9 +39,11 @@ To enable such a scenario, three Transit Gateway Route Tables are created.  One 
 
 ## Deployment
 * Clone the repository.
-* Change ACCESS_KEY and SECRET_KEY values in terraform.tfvars.example.  And rename `terraform.tfvars.example` to `terraform.tfvars`.
+* I have moved away from passing my secret key and secret id as variables from the TFVARS file, as a result of inadvertently sharing my credentials.  Instead, please 
+* refer to this link https://registry.terraform.io/providers/hashicorp/aws/latest/docs to learn how to configure a shared credentials file that is not included as part 
+* of a repository.
 * Change parameters in the variables.tf.
-* If you desire to remove either the Managment VPC or Spoke2 VPC, please either remove those files (vpc-mgmt.tf, vpc-spoke2.tf) or add .example to their respective filenames (vpc-mgmt.tf.example, vpc-spoke2.tf.example) and you will need to remove or add ".example" to mgmt-redist-to-spoke2.tf.  Sorry, this is cludgy, but I'm still learning Terraform. 
+* "spoke vpcs are added by updating the "connected-vpcs2.tf file "locals" to reflect your desired configurations.  This script will loop through whatever you define and create vpcs named accordingly and deploy a single subnet with a linux VM for testing.  All TGW connections should be created and routes re-distributed.  The only thing that is missing here is creating an EIP and adding it to the management VPC linux VM ENI.  This will be automated in future releases, for the time being, please just use the procedure located at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
 * Initialize the providers and modules:
   ```sh
   $ terraform init
