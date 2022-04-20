@@ -1,0 +1,6 @@
+// AWS Environment
+
+region = "<your region"
+availability_zone1 = "<your az1>"
+availability_zone2 = "<your az2>"
+keypair = "<your keypair>"
