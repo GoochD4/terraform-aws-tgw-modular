@@ -18,7 +18,7 @@ resource "aws_vpc" "vpcs" {
   cidr_block = each.value.cidr
 
   tags = {
-    Name = "${var.tag_name_prefix}-${each.value.name}"
+    Name = "${var.tag_name_prefix}-${each.value.name}-vpc"
     # scenario = var.scenario
   }
 }
