@@ -46,35 +46,35 @@ resource "aws_security_group" "NSG-spoke-ssh-icmp-https" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["45.19.226.46/32"]
   }
 
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["45.19.226.46/32"]
   }
 
   ingress {
     from_port   = 8 # the ICMP type number for 'Echo'
     to_port     = 0 # the ICMP code
     protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["45.19.226.46/32"]
   }
 
   ingress {
     from_port   = 0 # the ICMP type number for 'Echo Reply'
     to_port     = 0 # the ICMP code
     protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["45.19.226.46/32"]
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["45.19.226.46/32"]
   }
 
   tags = {
@@ -117,7 +117,7 @@ resource "aws_route_table" "vpc-rt" {
   vpc_id   = aws_vpc.vpcs[each.value.name].id
 
   route {
-    cidr_block         = "0.0.0.0/0"
+    cidr_block         = "45.19.226.46/32"
     transit_gateway_id = aws_ec2_transit_gateway.TGW-XAZ.id
   }
 
