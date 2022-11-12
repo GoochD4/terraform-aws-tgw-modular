@@ -12,7 +12,7 @@ resource "aws_security_group" "NSG-vpc-sec-ssh-icmp-https" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["45.19.226.41/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
