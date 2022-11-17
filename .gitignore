@@ -9,3 +9,4 @@
 *.tfstate.backup
 *.csv
 .terraform/
+*.pem
